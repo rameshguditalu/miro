@@ -31,7 +31,7 @@ export const Actions = ({
   title,
 }: ActionsProps) => {
   const { onOpen } = useRenameModal();
-  const { mutate, loading } = useApiMutation(api.board.remove);
+  const { mutate, pending } = useApiMutation(api.board.remove);
   const onCopyLink = () => {
     navigator.clipboard
       .writeText(`${window.location.origin}/board/${id}`)
@@ -68,7 +68,7 @@ export const Actions = ({
         <ConfirmModal
           header="Delete board?"
           description="This will delete the board and all of its contents."
-          disabled={loading}
+          disabled={pending}
           onConfirm={onDelete}
         >
           <Button

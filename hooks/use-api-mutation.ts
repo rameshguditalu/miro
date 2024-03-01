@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useMutation } from "convex/react";
 
 export const useApiMutation = (mutationFunction: any) => {
-  const [loading, setLoading] = useState(false);
+  const [pending, setPending] = useState(false);
   const apiMutation = useMutation(mutationFunction);
 
   const mutate = (payload: any) => {
-    setLoading(true);
+    setPending(true);
     return apiMutation(payload)
-      .finally(() => setLoading(false))
+      .finally(() => setPending(false))
       .then((res) => {
         return res;
       })
@@ -19,6 +19,6 @@ export const useApiMutation = (mutationFunction: any) => {
 
   return {
     mutate,
-    loading,
+    pending,
   };
 };

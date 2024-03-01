@@ -10,7 +10,7 @@ import { toast } from "sonner";
 
 export const EmptyBoards = () => {
   const { organization } = useOrganization();
-  const { mutate, loading } = useApiMutation(api.board.create);
+  const { mutate, pending } = useApiMutation(api.board.create);
 
   const onClick = () => {
     if (!organization) return;
@@ -33,7 +33,7 @@ export const EmptyBoards = () => {
         Start by creating a board for your organization
       </p>
       <div className="mt-6">
-        <Button disabled={loading} size="lg" onClick={onClick}>
+        <Button disabled={pending} size="lg" onClick={onClick}>
           Create board
         </Button>
       </div>

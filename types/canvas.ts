@@ -25,7 +25,6 @@ export type RectangleLayer = {
   width: number;
   fill: Color;
   value?: string;
-  points: number[][];
 };
 
 export type EllipseLayer = {
